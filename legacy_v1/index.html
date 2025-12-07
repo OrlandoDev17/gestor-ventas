@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dulces & Postres - Gestión de Ventas</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1><i class="fa-solid fa-cake-candles"></i> Dulces & Postres</h1>
+        <div class="date-display" id="dateDisplay"></div>
+      </header>
+
+      <div class="rate-card">
+        <div class="rate-header">
+          <i class="fa-solid fa-money-bill-trend-up"></i> Tasa del Día (BCV)
+        </div>
+        <div class="rate-input-group">
+          <span>Bs.</span>
+          <input
+            type="number"
+            id="exchangeRate"
+            step="0.01"
+            placeholder="Cargando..."
+          />
+          <button id="refreshRateBtn" title="Actualizar Tasa">
+            <i class="fa-solid fa-rotate"></i>
+          </button>
+        </div>
+        <div id="apiStatus" class="status-indicator">Conectando...</div>
+      </div>
+
+      <div class="main-content">
+        <section class="sales-form">
+          <h2>Nueva Venta</h2>
+          <form id="salesForm">
+            <div class="form-group">
+              <label for="productSelect">Producto</label>
+              <select id="productSelect" required>
+                <option value="">Seleccione un postre...</option>
+                <option value="Torta de Chocolate" data-price="25">
+                  Torta de Chocolate ($25)
+                </option>
+                <option value="Torta de Vainilla" data-price="20">
+                  Torta de Vainilla ($20)
+                </option>
+                <option value="Quesillo" data-price="15">Quesillo ($15)</option>
+                <option value="Galletas (Docena)" data-price="10">
+                  Galletas (Docena) ($10)
+                </option>
+                <option value="Pie de Limón" data-price="18">
+                  Pie de Limón ($18)
+                </option>
+                <option value="Brownie" data-price="5">Brownie ($5)</option>
+                <option value="custom">Otro (Personalizado)</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="priceUSD">Precio ($)</label>
+                <input type="number" id="priceUSD" step="0.01" required />
+              </div>
+              <div class="form-group">
+                <label for="quantity">Cantidad</label>
+                <input type="number" id="quantity" value="1" min="1" required />
+              </div>
+            </div>
+
+            <div class="preview-total">
+              <span>Total estimado:</span>
+              <strong id="previewVES">Bs. 0.00</strong>
+            </div>
+
+            <button type="submit" class="btn-primary">
+              <i class="fa-solid fa-plus"></i> Registrar Venta
+            </button>
+          </form>
+        </section>
+
+        <section class="summary-section">
+          <div class="summary-card total">
+            <h3>Total Ventas Hoy</h3>
+            <div class="amount-usd" id="totalUSD">$0.00</div>
+            <div class="amount-ves" id="totalVES">Bs. 0.00</div>
+          </div>
+        </section>
+      </div>
+
+      <section class="sales-list-section">
+        <div class="list-header">
+          <h2>Ventas Recientes</h2>
+          <div class="actions">
+            <button id="exportBtn" class="btn-secondary">
+              <i class="fa-solid fa-file-export"></i> Exportar
+            </button>
+            <button id="clearBtn" class="btn-danger">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </div>
+        </div>
+        <div class="table-container">
+          <table id="salesTable">
+            <thead>
+              <tr>
+                <th>Hora</th>
+                <th>Producto</th>
+                <th>Precio ($)</th>
+                <th>Cant.</th>
+                <th>Total (Bs)</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Rows via JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
