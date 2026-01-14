@@ -17,7 +17,7 @@ export const DESSERTS = [
 ];
 
 export const WHOLE_CAKES = [
-  { id: 201, name: "Quesillo 1kg", price: 12, currency: "USD" },
+  { id: 201, name: "Quesillo 1kg", price: 15, currency: "USD" },
   { id: 202, name: "Quesillo decorado 1kg", price: 25, currency: "USD" },
   { id: 203, name: "Chocoquesillo 1kg", price: 20, currency: "USD" },
   { id: 204, name: "Chocoquesillo decorado 1kg", price: 25, currency: "USD" },
